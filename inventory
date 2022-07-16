@@ -1,5 +1,12 @@
-172.16.250.132 apache_package=apache2 php_package=libapache2-mod-php #ubuntu
-172.16.250.133 apache_package=apache2 php_package=libapache2-mod-php #ubuntu
-172.16.250.134 apache_package=apache2 php_package=libapache2-mod-php #ubuntu
-172.16.250.248 apache_package=httpd php_package=php #centos
+[web_servers]
+172.16.250.132 #ubuntu
+172.16.250.248 #centos
+
+[db_servers]
+172.16.250.133 #ubuntu
+
+[file_servers]
+172.16.250.134 #ubuntu
+
+
 
