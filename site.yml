@@ -5,19 +5,29 @@
   pre_tasks:
 
 
-  - name: install updates (CentOS)
+  - name: update repo cache (CentOS)
     tags: always
     dnf:
-      update_only: yes
       update_cache: yes
+    changed_when: false
     when: ansible_distribution == "CentOS"
 
-  - name: install updates (Ubuntu)
+  - name: update repo cache (Ubuntu)
     tags: always
     apt:
-      upgrade: dist
       update_cache: yes
+    change_when: false
     when: ansible_distribution == "Ubuntu"
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: add ssh key for nati
+    tags: always
+    authrized_key:
+      user: nati
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPP2Z7tA+UogL8KuwGg8ASx5yIIS14SSrKNNV8HqdFBq nati default"
 
 - hosts: workstations
   become: true
