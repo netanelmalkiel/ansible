@@ -27,7 +27,7 @@
     tags: always
     authrized_key:
       user: nati
-      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPP2Z7tA+UogL8KuwGg8ASx5yIIS14SSrKNNV8HqdFBq nati default"
+      key: "ssh-ed25519 nati default"
 
 - hosts: workstations
   become: true
