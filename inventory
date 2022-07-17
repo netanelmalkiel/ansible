@@ -8,5 +8,6 @@
 [file_servers]
 172.16.250.134 #ubuntu
 
-
+[workstations]
+172.16.250.135
 
