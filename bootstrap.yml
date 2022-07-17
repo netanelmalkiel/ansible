@@ -1,0 +1,46 @@
+---
+
+- hosts: all
+  become: true
+  pre_tasks:
+
+
+  - name: install updates (CentOS)
+    tags: always
+    dnf:
+      update_only: yes
+      update_cache: yes
+    when: ansible_distribution == "CentOS"
+
+  - name: install updates (Ubuntu)
+    tags: always
+    apt:
+      upgrade: dist
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: create nati user
+    tags: always
+    user:
+      name: simon
+      groups: root
+
+  - name: add ssh key for nati
+    tags: always
+    authrized_key:
+      user: nati
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPP2Z7tA+UogL8KuwGg8ASx5yIIS14SSrKNNV8HqdFBq nati default"
+
+  - name: add sudoers file for nati
+    tags: always
+    copy:
+      src: sudoer_nati
+      dest: /etc/sudoers.d/nati
+      owner: root
+      group: root
+      mode: 0440
+
