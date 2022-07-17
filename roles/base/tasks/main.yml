@@ -1,0 +1,4 @@
+- name: add ssh key for nati
+  authorized_key:
+    user: nati
+    key: "ssh-ed25519"
